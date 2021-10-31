@@ -1,0 +1,22 @@
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: qa
+  labels:
+    name: qa
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: spring-petclinic-service-qa
+  namespace: qa
+spec:
+  type: LoadBalancer
+  selector:
+    app: spring-petclinic-qa
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 8080
+
